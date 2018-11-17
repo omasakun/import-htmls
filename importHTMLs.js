@@ -1,4 +1,27 @@
 /*
+MIT License
+
+Copyright (c) 2017 omasakun (https://github.com/omasakun)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+/**
 Make sure that this script is loaded earlier than any script.
 
 This script add an import tag.
@@ -33,7 +56,7 @@ function importHTMLs() {
 		// This function returns whether the importHTMLs function needs to be recalled to read the newly added import tag.
 		const path = importElem.getAttribute("src");
 		if (!path) {
-			warn("There was an import tag for which src does not specify the file path you want to load. I ignored it.");
+			warn("There was an import tag for which src does not specify the file path you want to load. Ignored it.");
 			return false; // It is not necessary to re-call importHTMLs
 		}
 		return fetch(path)
@@ -64,7 +87,7 @@ function importHTMLs() {
 				importElem.parentElement.removeChild(importElem);
 				return shouldRecall;
 			})
-			.catch(err => warn(path + " の読み込みでエラーが起きました。詳細は……", err));
+			.catch(err => warn("An error occurred while loading "+path + ". Detail...", err));
 	})).then(shouldRecall => {
 		if (shouldRecall.some(_ => _))
 			return importHTMLs();

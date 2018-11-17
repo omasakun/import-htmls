@@ -1,5 +1,10 @@
 # importHTMLs
+## Usage
+1. Copy `importHTMLs.js` to your project.
+2. Write `<script src="importHTMLs.js">` in the `<head>` tag before loading any other scripts using `window.addEventListener("load", ... )`.
+3. If you've found any issue, feel free to ask me to fix the issues.
 
+## Description
 **Make sure that this script is loaded earlier than any script.**
 
 This script add an import tag.
