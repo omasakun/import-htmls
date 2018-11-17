@@ -5,7 +5,7 @@ https://omasakun.github.io/import-htmls/demo/
 ## Usage
 1. Copy `importHTMLs.js` to your project.
 2. Write `<script src="importHTMLs.js">` in the `<head>` tag before loading any other scripts using `window.addEventListener("load", ... )`.
-3. If you've found any issue, feel free to ask me to fix the issues.
+3. If you've found any issue, feel free to ask me to fix the issues (or, create a pull request).
 
 ## Description
 **Make sure that this script is loaded earlier than any script.**
