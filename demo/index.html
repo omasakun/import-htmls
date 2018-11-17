@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="author" content="omasakun">
+	<title>importHTMLs Demo</title>
+	<link rel="stylesheet" href="./index.css" />
+	<script src="../importHTMLs.js"></script>
+</head>
+
+<body>
+	<h1>importHTMLs Demo</h1>
+	<div id="main">
+			<article class="card">
+				<span class="s">Hover Me!</span>
+				<div>This element is written in <code>index.html</code> file itself.</div>
+			</article>
+			<import src="./card.html"></import>
+	</div>
+	<import src="./footer.html"></import>
+</body>
