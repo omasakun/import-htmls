@@ -10,13 +10,13 @@ https://omasakun.github.io/import-htmls/demo/
 ## Description
 **Make sure that this library is loaded earlier than any script.**
 
-This library add an import tag.
+This library add an import-html tag.
 
-For example, `<import src="./button.html" />` will be replaced with the contents of `./button.html`.  
+For example, `<import-html src="./button.html"></import-html>` will be replaced with the contents of `./button.html`.  
 
-By default, the import tag is replaced only when the page is read for the first time.  
-(Exception: the import tag written in the file imported by the import tag will be replaced)  
-If you want to interpret the import tag at other times, please call the importHTMLs function without arguments.
+By default, the import-html tag is replaced only when the page is read for the first time.  
+(Exception: the import-html tag written in the file imported by the import-html tag will be replaced)  
+If you want to interpret the import-html tag at other times, please call the importHTMLs function without arguments.
 
 The load event handler added between the time that this library is loaded and the window load event fires is called after importHTMLs is executed.
 

@@ -10,12 +10,12 @@ https://omasakun.github.io/import-htmls/demo/
 ## Description
 **このライブラリーは、どのスクリプトよりも先に読み込まれるようにしてください。**
 
-このライブラリーは、importタグを追加します。
+このライブラリーは、import-htmlタグを追加します。
 
-例えば、`<import src="./button.html" />` というタグを書いた場合、 `./button.html` の内容でそのタグが置き換えられます。
-標準では、最初にページが読み込まれたときにのみ import タグの置き換えがされます。  
-(例外:importタグによってインポートされたファイル中に書いてあるimportタグは、例外的に自動的に読み込まれます。)  
-もし、それ以外のタイミングで import タグの解釈をさせたい場合、 importHTMLs 関数を引数無しで読んでください。
+例えば、`<import-html src="./button.html"></import-html>` というタグを書いた場合、 `./button.html` の内容でそのタグが置き換えられます。
+標準では、最初にページが読み込まれたときにのみ import-html タグの置き換えがされます。  
+(例外: import-html タグによってインポートされたファイル中に書いてある import-html タグは、例外的に自動的に読み込まれます。)  
+もし、それ以外のタイミングで import-html タグの解釈をさせたい場合、 importHTMLs 関数を引数無しで読んでください。
 
 このスクリプトが読み込まれてから window の load イベントが発火するまでに追加された load イベントハンドラーは、importHTMLs 実行後に呼び出されます。
 

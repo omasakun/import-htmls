@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2017 omasakun (https://github.com/omasakun)
+Copyright (c) 2019 omasakun (https://github.com/omasakun)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,13 +24,13 @@ SOFTWARE.
 /**
 **Make sure that this library is loaded earlier than any script.**
 
-This library add an import tag.
+This library add an import-html tag.
 
-For example, `<import src="./button.html" />` will be replaced with the contents of `./button.html`.  
+For example, `<import-html src="./button.html"></import-html>` will be replaced with the contents of `./button.html`.  
 
-By default, the import tag is replaced only when the page is read for the first time.  
-(Exception: the import tag written in the file imported by the import tag will be replaced)  
-If you want to interpret the import tag at other times, please call the importHTMLs function without arguments.
+By default, the import-html tag is replaced only when the page is read for the first time.  
+(Exception: the import-html tag written in the file imported by the import-html tag will be replaced)  
+If you want to interpret the import-html tag at other times, please call the importHTMLs function without arguments.
 
 The load event handler added between the time that this library is loaded and the window load event fires is called after importHTMLs is executed.
 
@@ -55,23 +55,23 @@ The `<script src = "..." />` and `<script>  some JS code  </script>` written in 
 })();
 function importHTMLs() {
 	const warn = (..._) => console.warn("[importHTMLs] ", ..._);
-	return Promise.all(Array.from(document.getElementsByTagName("import")).map(importElem => {
-		// This function returns whether the importHTMLs function needs to be recalled to read the newly added import tag.
+	return Promise.all(Array.from(document.getElementsByTagName("import-html")).map(importElem => {
+		// This function returns whether the importHTMLs function needs to be re-called to read the newly added import-html tag.
 		const path = importElem.getAttribute("src");
 		if (!path) {
-			warn("There was an import tag for which src does not specify the file path you want to load. Ignored it.");
+			warn("There was an import-html tag for which src does not specify the file path you want to load. Ignored it.");
 			return false; // It is not necessary to re-call importHTMLs
 		}
 		return fetch(path)
 			.then(res => res.text())
 			.then(text => {
-				let shouldRecall = false; // Whether it is needed to recall importHTMLs
+				let shouldReCall = false; // Whether it is needed to re-call importHTMLs
 				let tmp = document.createElement("div");
 				tmp.innerHTML = text;
 				(function replaceScriptTag(elem) {
 					elem.childNodes.forEach((child, index) => {
-						if (child.tagName == "IMPORT") {
-							shouldRecall = true;
+						if (child.tagName == "IMPORT-HTML") {
+							shouldReCall = true;
 						} else if (child.tagName == "SCRIPT") {
 							let newElem = document.createElement("script");
 							for (let i = 0; i < child.attributes.length; i++) {
@@ -88,7 +88,7 @@ function importHTMLs() {
 				})(tmp);
 				tmp.childNodes.forEach(_ => importElem.parentElement.insertBefore(_, importElem));
 				importElem.parentElement.removeChild(importElem);
-				return shouldRecall;
+				return shouldReCall;
 			})
 			.catch(err => warn("An error occurred while loading "+path + ". Detail...", err));
 	})).then(shouldRecall => {
