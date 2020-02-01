@@ -1,6 +1,6 @@
 # importHTMLs
 ## Demo
-https://omasakun.github.io/import-htmls/demo/
+[Open This](https://omasakun.github.io/import-htmls/demo/)
 
 ## Usage
 1. Copy `importHTMLs.js` to your project.
